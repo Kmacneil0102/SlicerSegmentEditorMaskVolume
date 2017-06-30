@@ -26,7 +26,7 @@ class SegmentEditorEffect(AbstractScriptedSegmentEditorEffect):
     return qt.QIcon()
 
   def helpText(self):
-    return """<html>Use currently selected segment as a mask.<br>. The mask is applied to the master volume.
+    return """<html>Use currently selected segment as a mask.<br> The mask is applied to the master volume.
 </html>"""
 
   def setupOptionsFrame(self):
@@ -89,7 +89,6 @@ class SegmentEditorEffect(AbstractScriptedSegmentEditorEffect):
     outputPolyData = vtk.vtkPolyData()
     slicer.vtkSlicerSegmentationsModuleLogic.GetSegmentClosedSurfaceRepresentation(segmentationNode, segmentID, outputPolyData)
     maskingModel.SetAndObservePolyData(outputPolyData)
-    slicer.mrmlScene.AddNode(maskingModel)
 
     self.maskVolumeWithSegment(inputVolume, maskingModel, maskOutsideSurface, fillValue, outputVolume)
     qt.QApplication.restoreOverrideCursor()
